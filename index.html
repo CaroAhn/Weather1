@@ -19,16 +19,13 @@
 <div class="project">
 
 <form id="search-form">
-    <div class="Search">
+    <div class="weather-search">
        <div class="row">
             <div class="col-6">
                 <input type="search" placeholder="Enter a city.." class="form-control search-input" id="city-input" autocomplete="off">
             </div>
             <div class="col-2">
                 <input type="submit" class="btn btn-primary w-100" value="Search">
-            </div>
-            <div class="col-2">
-                <input type="submit" class="btn btn-primary w-100" value="Location">
             </div>
     </div>
     </div>
@@ -37,12 +34,14 @@
 <h1 class="current-day"> 18:20 
 </br>
 Friday, June 25</h1>
-    
+
+<img src="" id="icon-principal">
+
 <h2 class="current-city" id="city"> 
 Quito </h2>
 
 <h3 class="current-weather" id="description-weather"> 
-    Mostly Cloudy ☁️  
+    Mostly Cloudy  
 </h3>
 
 <h4 class="current-temperature" id="temperature"> 
@@ -54,8 +53,8 @@ Quito </h2>
 
 <div class="information">
   <div class="row row-cols-2">
-    <div class="col" id="wind">Wind: 11 km/h</div>
-    <div class="col" id="humidity">Humidity: 54%</div>
+    <div class="col">Wind: <span id="wind"></span>km/h</div>
+    <div class="col">Humidity: <span id="humidity"></span>%</div>
   </div>
   </div>
 

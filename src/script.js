@@ -35,39 +35,36 @@ h1.innerHTML = `${hour}:${minute}
 </br>
 ${day}, ${month} ${date}`;
 
-function showWeatherInformation(response) {
-  document.querySelector("h2").innerHTML = response.data.name;
-  temperature = Math.round(responde.data.main.temp);
-  document.querySelector("h4").innerHTML = temperature;
-  document.querySelector("#description-weather").innerHTML =
-    response.data.weather[0].main;
+function displayTemperature(response) {
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  let cityElement = document.querySelector("#city");
+  cityElement.innerHTML = response.data.name;
+  let descriptionElement = document.querySelector("#description-weather");
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = response.data.main.humidity;
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = Math.round(response.data.wind.speed);
+  let iconElement = document.querySelector("#icon-principal");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
-function citySearch(city) {
+function search(city) {
   let apiKey = "b3d07099f6c92c0d246342a33fe4b913";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeatherInformation);
+  axios.get(apiUrl).then(displayTemperature);
 }
-function weatherInput(event) {
-  event.preventDefault();
-  let city = document.querySelector("#search-city").value;
-  citySearch(city);
 
-  let citySubmit = document.querySelector("#search-form");
-  citySubmit.addEventListener("submit", weatherInput);
-}
-function showlocation(position) {
-  let apiKey = "b3d07099f6c92c0d246342a33fe4b913";
-  let latitude = position.coords.latitude;
-  let longitude = position.coords.longitude;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeatherInformation);
-}
-function currentLocation(event) {
+function handleSubmit(event) {
   event.preventDefault();
-  navigator.geolocation.currentPosition(showlocation);
+  let cityInputElement = document.querySelector("#city-input");
+  citySearch(cityInputElement.value);
 }
-let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", currentLocation);
+search("Quito");
 
-citySearch("quito");
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
