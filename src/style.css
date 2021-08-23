@@ -41,6 +41,10 @@ p {
   color: black;
 }
 
+small {
+  color: black;
+}
+
 .project {
   display: block;
   margin: 30px auto;
