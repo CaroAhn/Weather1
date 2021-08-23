@@ -62,7 +62,7 @@ function search(city) {
 function handleSubmit(event) {
   event.preventDefault();
   let cityInputElement = document.querySelector("#city-input");
-  citySearch(cityInputElement.value);
+  search(cityInputElement.value);
 }
 search("Quito");
 
