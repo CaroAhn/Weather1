@@ -23,14 +23,6 @@ h4 {
   color: black;
 }
 
-img {
-  width: 150px;
-  margin: -80px;
-  position: relative;
-  left: 250px;
-  top: 90px;
-}
-
 h3 {
   font-size: 20px;
   color: rgb(32, 32, 32);
@@ -77,18 +69,18 @@ small {
   font-size: 25px;
 }
 
-.day,
+.day {
+  font-size: 30px;
+  color: black;
+}
 .max-temp {
   color: black;
+  font-size: 20px;
 }
 
 .min-temp {
   color: gray;
   font-size: 20px;
-}
-
-.icon {
-  font-size: 35px;
 }
 
 .measures {
@@ -99,4 +91,12 @@ small {
   display: block;
   top: -65px;
   left: 45px;
+}
+
+.principal-icon {
+  width: 150px;
+  margin: -80px;
+  position: relative;
+  left: 250px;
+  top: 90px;
 }
