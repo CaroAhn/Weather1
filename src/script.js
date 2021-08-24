@@ -35,6 +35,29 @@ h1.innerHTML = `${hour}:${minute}
 </br>
 ${day}, ${month} ${date}`;
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let forecastDays = ["Thu", "Fri", "Sat", "Sun", "Mon"];
+  forecastDays.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+        <div class="day">${day}</div>
+        <img class="icon" src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png"/>
+    <div class="weather-forecast-temperature">
+    <span class="max-temp">18°C </span>
+    <span class="min-temp">7°C </span>
+    </div>
+    </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
@@ -65,6 +88,7 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 search("Quito");
+displayForecast();
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
